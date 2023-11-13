@@ -13,7 +13,7 @@
                     <button @click="playMusic" class="play-button" type="button">
                         <img ref="playButtonImg" src="../../../play-button.svg" alt="start-music" class="music-icon">
                     </button>
-                    <button class="next-button" type="button">
+                    <button @click="nextMusic" class="next-button" type="button">
                         <img src="../../../next-button.svg" alt="start-music" class="music-icon">
                     </button>
                 </div>
@@ -40,7 +40,7 @@
 </template>
 <script>
     import {onMounted} from 'vue';
-    import {play_list, playButtonImg, duration_show, playMusic} from './buttonEvent';
+    import {audioIndex, playButtonImg, duration_show, playMusic, nextMusic} from './buttonEvent';
     import {timeBar, volBarProgress, volBar, progressBar, timeMusic,
         changeVolume, timeBarEvent, updateProgressBar
     } from './reactBar';
@@ -52,8 +52,8 @@
             });
 
             return {
-                play_list, playButtonImg, timeMusic, timeBar, volBarProgress, volBar,
-                duration_show, progressBar,playMusic, updateProgressBar, timeBarEvent, changeVolume
+                audioIndex, playButtonImg, timeMusic, timeBar, volBarProgress, volBar,
+                duration_show, progressBar,playMusic, nextMusic, updateProgressBar, timeBarEvent, changeVolume
             }
         },
     };

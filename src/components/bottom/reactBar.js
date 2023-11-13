@@ -14,7 +14,7 @@ export function timeBarEvent(event) {
         const clickX = event.clientX - timeBarRect.left;
         const newTime = (clickX / timeBarRect.width) * durationSec;
 
-        play_list.value.seek(newTime)
+        play_list.seek(newTime)
     }
 }
 
@@ -25,7 +25,7 @@ export function changeVolume(event) {
         const newVol = (clickX / volBarRect.width) 
 
         volBarProgress.value.style.width = (newVol * 100) + '%';
-        play_list.value.volume(newVol)
+        play_list.volume(newVol)
     }
 }
 
@@ -34,11 +34,11 @@ export function updateProgressBar() {
         var interval = 100;
 
         var updateInterval = setInterval(function() {
-            var currentTime = play_list.value.seek() * 1000; // Chuyển đổi thời gian hiện tại thành mili giây
+            var currentTime = play_list.seek() * 1000; // Chuyển đổi thời gian hiện tại thành mili giây
             var progress = (currentTime / duration) * 100;
 
             progressBar.value.style.width = progress + '%';
-            timeMusic.value = change_time_format(play_list.value.seek());
+            timeMusic.value = change_time_format(play_list.seek());
 
             if (progress >= 100) {
                 clearInterval(updateInterval);

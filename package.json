@@ -8,6 +8,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.445.0",
+    "aws-sdk": "^2.1493.0",
+    "aws-sdk-js-codemod": "^0.26.2",
     "howler": "^2.2.4",
     "vue": "^3.3.4"
   },

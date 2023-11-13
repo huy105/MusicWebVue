@@ -41,7 +41,7 @@
       </div>
     </div>
     <div class="right">
-      70%s      
+        <right-contents></right-contents>
     </div>
   </div>
   <div class="bottom">
@@ -52,6 +52,7 @@
 
 <script setup>
 import AudioReactBar from './components/bottom/AudioReactBar.vue'
+import RightContents from './components/mid_component/RightContents.vue'
 </script>
 
 <style>
@@ -103,7 +104,7 @@ import AudioReactBar from './components/bottom/AudioReactBar.vue'
     }
 
     .left {
-        flex: 3; /* 30% */
+        flex: 2.5; /* 30% */
         overflow-y: scroll;
         background-color: #272424;
         border-radius: inherit;
@@ -125,14 +126,20 @@ import AudioReactBar from './components/bottom/AudioReactBar.vue'
     }
 
     .right {
-        flex: 7; /* 70% */
-        overflow-y: scroll;
+        flex: 7.5; /* 70% */
+        height: 100%;
+        width: 100%;
+        overflow-y: auto;
         margin-left: 10px;
         background-color: #272424;
         border-radius: inherit;
     }
 
     .right > div {
-        height: auto;
+        display: block;
+        box-sizing: border-box;
+        height: 100%;
+        width: auto;
+        margin: 10px 10px 10px 10px;
     }
 </style>
