@@ -39,11 +39,13 @@
     </div>
 </template>
 <script>
-    import {onMounted} from 'vue';
-    import {audioIndex, playButtonImg, duration_show, playMusic, nextMusic} from './buttonEvent';
+    import {onMounted, provide} from 'vue';
+    import {audioIndex, playButtonImg, 
+        duration_show, playMusic, nextMusic} from './buttonEvent';
     import {timeBar, volBarProgress, volBar, progressBar, timeMusic,
         changeVolume, timeBarEvent, updateProgressBar
     } from './reactBar';
+
     export default {
         setup() {
             
@@ -56,7 +58,8 @@
                 duration_show, progressBar,playMusic, nextMusic, updateProgressBar, timeBarEvent, changeVolume
             }
         },
+
     };
 
 </script>
-<style src="./audio_react_bar.css" ></style>
+<style src="../../assets/audio_react_bar.css" ></style>

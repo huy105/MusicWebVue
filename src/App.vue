@@ -2,43 +2,9 @@
 <div class="container">
   <div class="top">10%</div>
   <div class="middle">
-    <div class="left">30%
-      <div>
-        <p>123</p>
-        <p>123</p>
-        <p>123</p>
-        <p>123</p>
-        <p>123</p>
-        <p>123</p>
-        <p>123</p>
-        <p>123</p>
-        <p>123</p>
-        <p>123</p>
-        <p>123</p>
-        <p>123</p>
-        <p>123</p>
-        <p>123</p>
-        <p>123</p>
-        <p>123</p>
-        <p>123</p>
-        <p>123</p>
-        <p>123</p>
-        <p>123</p>
-        <p>123</p>
-        <p>123</p>
-        <p>123</p>
-        <p>123</p>
-        <p>123</p>
-        <p>123</p>
-        <p>123</p>
-        <p>123</p>
-        <p>123</p>
-        <p>123</p>
-        <p>123</p>
-        <p>123</p>
-        <p>123</p>
-        <p>123</p>
-      </div>
+    <div class="left">
+        <left-contents></left-contents>
+        <popup></popup>
     </div>
     <div class="right">
         <right-contents></right-contents>
@@ -53,6 +19,8 @@
 <script setup>
 import AudioReactBar from './components/bottom/AudioReactBar.vue'
 import RightContents from './components/mid_component/RightContents.vue'
+import LeftContents from './components/mid_component/LeftContents.vue'
+import Popup from './components/mid_component/Popup.vue'
 </script>
 
 <style>
@@ -108,10 +76,8 @@ import RightContents from './components/mid_component/RightContents.vue'
         overflow-y: scroll;
         background-color: #272424;
         border-radius: inherit;
-    }
-
-    .left > div {
-        height: auto;
+        height: 100%;
+        width: 100%
     }
 
     ::-webkit-scrollbar {

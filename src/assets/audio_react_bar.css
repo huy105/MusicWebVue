@@ -76,11 +76,12 @@
     border-radius: 15px; 
     height: 10px;
     width: 0;
+
+    &:hover {
+        background-color: rgb(46, 172, 71)
+    }
 }
 
-.time-progress:hover {
-    background-color: rgb(46, 172, 71)
-}
 
 .next-button, .back-button {
     height: 45%;
@@ -88,14 +89,14 @@
 
 .play-button {
     height: 60%;
+
+    &:hover {
+        height: 70%;
+    }
 }
 
 .next-button:hover, .back-button:hover {
     height: 60%;
-}
-
-.play-button:hover {
-    height: 70%;
 }
 
 .music-icon {
@@ -136,8 +137,8 @@
     height: 10px;
     background-color: #817b7b;
     border-radius: 15px; 
-}
 
-.vol-bar-progress:hover {
-    background-color: rgb(46, 172, 71)
+    &:hover {
+        background-color: rgb(46, 172, 71)
+    }
 }

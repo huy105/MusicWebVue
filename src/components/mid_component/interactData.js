@@ -1,6 +1,13 @@
 import {ref, computed} from 'vue'
 
-export const data = ref([
+
+export function playThisMusic(value) {
+ 
+    console.log(value)
+
+};
+
+export const recommendData = ref([
     {   
         topic_title: "Recently",
         Songs: [
@@ -8,6 +15,9 @@ export const data = ref([
             {title: "daily2", artist:"EdSheeran"},
             {title: "daily3", artist:"Sam"},
             {title: "daily4", artist:"Smith"},
+            {title: "daily5", artist:"Sara"},
+            {title: "daily6", artist:"Sara"},
+            {title: "daily7", artist:"Sara"},
         ]
     },
     {
@@ -29,3 +39,4 @@ export const data = ref([
         ]
     },
 ])
+

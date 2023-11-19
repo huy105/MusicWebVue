@@ -1,8 +1,9 @@
 import {Howl, Howler} from 'howler';
-import {ref, computed} from 'vue'
+import {ref, computed, inject} from 'vue'
 import {change_time_format, change_music} from '../../utils/utils'
+import axios from 'axios'
 
-const data = ['./a123.mp3','./Aimer-1.mp3', './Aimer-2.mp3', './Aimer-SKYLIGHT.mp3']
+export var audioDataList = ['./a123.mp3','./Aimer-1.mp3', './Aimer-2.mp3', './Aimer-SKYLIGHT.mp3']
 
 export const playButtonImg = ref(null)
 export var audioIndex = ref(0)
@@ -24,16 +25,16 @@ export function playMusic() {
 
 export function nextMusic() {
     audioIndex.value += 1
-    change_music(audioIndex, play_list, data)
+    change_music(audioIndex, play_list, audioDataList)
 }
 
 export function backMusic() {
     audioIndex.value -= 1
-    change_music(audioIndex, play_list, data)
+    change_music(audioIndex, play_list, audioDataList)
 }
 
 export var play_list = new Howl ({
-    src: [data[audioIndex.value]],
+    src: [audioDataList[audioIndex.value]],
     html5: true,
     preload: 'auto',
 });
@@ -43,4 +44,3 @@ play_list.on('load', function() {
     duration_show.value = change_time_format(durationSec)
     duration = play_list.duration() * 1000;
 });
-
