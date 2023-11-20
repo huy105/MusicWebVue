@@ -1,4 +1,5 @@
 import {ref, watch, computed} from 'vue'
+import {HandleClick} from '../../utils/handleMenuClick'    
 
 export var isMenuVisible = ref(false)
 export var rightClickOutsideMenu = ref(false)
@@ -19,36 +20,11 @@ export function addList() {
     farvoriteList.value.push({id: LastId, title: "New list"})
 }
 
-// show menu each list
-export function showMenu(event, index) {
-
-    isMenuVisible.value = true;
-    menuPosition.value = { x: event.clientX, y: event.clientY };
-    event.preventDefault();
-    
-    // hold the index when click right
-    idList.value = index
-
-    window.addEventListener('click', checkClickOutsideWindow);
-    window.addEventListener('contextmenu', checkClickOutsideWindow);
-}
-
-// hide menu after event click
-function hideContextMenu() {
-    isMenuVisible.value = false;
-
-    window.removeEventListener('contextmenu', checkClickOutsideWindow);
-    window.removeEventListener('click', checkClickOutsideWindow);
-}
-
-function checkClickOutsideWindow(event) {
-    var listElement = wholeList.value
-    event.preventDefault();
-
-    if (listElement && !listElement.contains(event.target)) {
-        hideContextMenu()
-    }
-}
+// handle show menu each list by object
+const handleClickLeft = new HandleClick(isMenuVisible, idList, wholeList, menuPosition);
+export function showMenuLeft(event, id) {
+    handleClickLeft.showMenu(event, id)
+};
 
 // changing position after click
 export var newMenuStyle = computed(() => {

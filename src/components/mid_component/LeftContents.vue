@@ -11,8 +11,8 @@
                 </button>
             </div>
         </div>
-        <div ref="wholeList" class="list-farvorite-list">
-            <div v-for="list in farvoriteList" @contextmenu.prevent="showMenu($event, list.id)" class="list">
+        <div  class="list-farvorite-list">
+            <div ref="wholeList" v-for="list in farvoriteList" @contextmenu.prevent="showMenuLeft($event, list.id)" class="list">
                 <div class="left-list">
                     <img src="" alt="">
                 </div>
@@ -33,7 +33,7 @@
 <script>
     import {inject, onMounted, watch} from 'vue';
     import {farvoriteList, wholeList, isMenuVisible, newMenuStyle,
-        addList, showMenu, openPopup, deledeList} from './displayMenuEachList';    
+        addList, openPopup, deledeList, showMenuLeft} from './displayMenuEachList';    
 
     export default {
         setup() {
@@ -44,7 +44,7 @@
 
             return {
                 wholeList, isMenuVisible, newMenuStyle, farvoriteList, 
-                addList, showMenu, openPopup, deledeList
+                addList, showMenuLeft, openPopup, deledeList
             };
         },
     };

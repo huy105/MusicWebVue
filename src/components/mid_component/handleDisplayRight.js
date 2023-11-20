@@ -1,9 +1,9 @@
 import {ref, watch, computed} from 'vue'
+import {HandleClick, HandleClickManyDom} from '../../utils/handleMenuClick'    
 
 export const containerRight = ref(null)
 export const eachContent = ref(null)
 export var maxItemsToShow = ref(2)
-
 
 // control how much content to show
 export function controlContent() {
@@ -21,4 +21,55 @@ export function controlContent() {
     }
 };
 
+// each song menu
+export const isSongMenuVisible = ref(false)
+export const idSong = ref(false)
+export const songPosClick = ref({ x: 0, y: 0 })
+
+// const handleClickLeft = new HandleClick(isSongMenuVisible, idSong, eachContent, songPosClick);
+// export function showMenuRight(event, id) {
+//     handleClickLeft.showMenu(event, id)
+// };
+
+export var newRightMenuStyle = computed(() => {
+    return {
+        position: 'fixed',
+        top: `${songPosClick.value.y}px`,
+        left: `${songPosClick.value.x}px`,
+    }
+})
+
+// next menu after hover
+export const isFavorListVisible = ref(false)
+export const idFavorList = ref(false)
+export const eachSongMenu = ref(null)
+
+export function showListFavor() {
+    isFavorListVisible.value = true
+};
+
+const handleHoverAddToList = new HandleClickManyDom(isFavorListVisible, isSongMenuVisible, idFavorList, eachContent, songPosClick);
+export function showMenuRight(event, id) {
+    handleHoverAddToList.showMenu(event, id)
+};
+
+export var newFavorListStyle = computed(() => {
+    
+    var withEachSongMenu = eachSongMenu.value.getBoundingClientRect().width
+    
+    return {
+        position: 'fixed',
+        top: `${songPosClick.value.y}px`,
+        left: `${songPosClick.value.x + withEachSongMenu + 2}px`,
+    }
+})
+
+// watch(eachSongMenu, (newValue, oldValue) =>  {
+//     if (newValue) {
+//         console.log('xuất hiện')
+//         newFavorListStyle.value;
+//     } else {
+//         console.log('ẩn')
+//     };
+// });
 
