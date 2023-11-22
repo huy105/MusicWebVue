@@ -1,5 +1,5 @@
 import {ref, watch, computed} from 'vue'
-import {HandleClick, HandleClickManyDom} from '../../utils/handleMenuClick'    
+import {HandleClickManyDom} from '../../utils/handleMenuClick'    
 
 export const containerRight = ref(null)
 export const eachContent = ref(null)
@@ -23,13 +23,7 @@ export function controlContent() {
 
 // each song menu
 export const isSongMenuVisible = ref(false)
-export const idSong = ref(false)
 export const songPosClick = ref({ x: 0, y: 0 })
-
-// const handleClickLeft = new HandleClick(isSongMenuVisible, idSong, eachContent, songPosClick);
-// export function showMenuRight(event, id) {
-//     handleClickLeft.showMenu(event, id)
-// };
 
 export var newRightMenuStyle = computed(() => {
     return {
@@ -63,13 +57,4 @@ export var newFavorListStyle = computed(() => {
         left: `${songPosClick.value.x + withEachSongMenu + 2}px`,
     }
 })
-
-// watch(eachSongMenu, (newValue, oldValue) =>  {
-//     if (newValue) {
-//         console.log('xuất hiện')
-//         newFavorListStyle.value;
-//     } else {
-//         console.log('ẩn')
-//     };
-// });
 

@@ -36,10 +36,9 @@
 
 <script>
     import {onMounted} from 'vue';
-    import {maxItemsToShow, containerRight, eachContent, 
-        isSongMenuVisible, newRightMenuStyle, 
-        isFavorListVisible, eachSongMenu, newFavorListStyle,
-        showMenuRight, controlContent, showListFavor
+    import {containerRight, maxItemsToShow, eachContent, controlContent,
+        isSongMenuVisible, newRightMenuStyle, isFavorListVisible, eachSongMenu,
+        newFavorListStyle, showMenuRight, showListFavor
     } from './handleDisplayRight';
     import {recommendData, playThisMusic} from './interactData';   
 
@@ -61,4 +60,4 @@
 
 </script>
 
-<style src="../../assets/right_contents.css" ></style>
+<style src="../../assets/recommend_song.css" ></style>

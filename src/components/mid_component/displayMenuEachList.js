@@ -3,7 +3,7 @@ import {HandleClick} from '../../utils/handleMenuClick'
 
 export var isMenuVisible = ref(false)
 export var rightClickOutsideMenu = ref(false)
-export var wholeList = ref(null)
+export var eachList = ref(null)
 export var idList = ref(null)
 export var menuPosition= ref({ x: 0, y: 0 })
 export var isPopupVisible = ref(false)
@@ -16,12 +16,23 @@ export var farvoriteList = ref([
 ])
 
 export function addList() {
-    var LastId = farvoriteList.value.length
+    // handle logic after create database (if done, wipe out)
+
+    var LastId = farvoriteList.value.length + 1
     farvoriteList.value.push({id: LastId, title: "New list"})
 }
 
+export function deledeList() {
+    // handle logic after create database (if done, wipe out)
+
+    farvoriteList.value = farvoriteList.value.filter(
+        (item) => item.id !== (idList.value)
+    );
+    
+}
+
 // handle show menu each list by object
-const handleClickLeft = new HandleClick(isMenuVisible, idList, wholeList, menuPosition);
+const handleClickLeft = new HandleClick(isMenuVisible, idList, eachList, menuPosition);
 export function showMenuLeft(event, id) {
     handleClickLeft.showMenu(event, id)
 };
@@ -51,8 +62,3 @@ export function closePopup() {
     newNameList.value = null
 }
 
-export function deledeList() {
-    farvoriteList.value = farvoriteList.value.filter(
-        (item) => item.id !== (idList.value)
-    );
-}

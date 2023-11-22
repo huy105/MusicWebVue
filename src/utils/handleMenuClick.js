@@ -3,7 +3,7 @@ export class HandleClick {
         This class handle event click to show action of each contents (like click each song and add them to farvorite list)
             * @param {boolean} isShowVar - vue ref variable to indicate menu is showing or not
             * @param {string, number} indexData - vue ref variable to get the unique index of each contents when click
-            * @param {DOM} checkingElement - vue ref variable to check if click is inside content
+            * @param {Array<Dom>} checkingElement - vue ref variable (array of DOM) to check if click is inside content
             * @param {object} clickPosition - vue ref variable to get value of position at each click
     **/
     constructor(isShowVar, indexData, checkingElement, clickPosition) {
@@ -19,6 +19,7 @@ export class HandleClick {
     }
 
     showMenu(event, index) {
+    
         this.isShowVar.value = true;
         this.clickPosition.value = { x: event.clientX, y: event.clientY };
         event.preventDefault();
@@ -37,7 +38,13 @@ export class HandleClick {
         /**
             check all element if event click is inside any element (it's mean click to content)
             then checkInside = true else checkInside = false
+            Constaint: this.checkingElement.value must be array
         **/
+        
+        if (!Array.isArray(this.checkingElement.value)) {
+            this.checkingElement.value = [this.checkingElement.value];
+        };
+              
         var checkElements = this.checkingElement.value;
         event.preventDefault();
         
@@ -65,6 +72,11 @@ export class HandleClick {
 };
 
 export class HandleClickManyDom extends HandleClick {
+    /**
+        This class handle event when we have menu in menu
+        @param {boolean} nextShowVar - vue ref variable to indicate next menu of some menu is showing or not
+    **/
+    
     constructor( nextShowVar, ...rest) {
         super(...rest);
         this.nextShowVar = nextShowVar;
@@ -72,6 +84,7 @@ export class HandleClickManyDom extends HandleClick {
 
     showMenu(event, index) {
         this.isShowVar.value = true;
+        // if we click content again we need to hide next menu
         this.nextShowVar.value = false;
 
         this.clickPosition.value = { x: event.clientX, y: event.clientY };
