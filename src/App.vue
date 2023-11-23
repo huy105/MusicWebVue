@@ -1,29 +1,24 @@
 <template>
 <div class="container">
   <div class="top">
-    <nav-bar></nav-bar>
+    <router-view name="topBar"></router-view>
   </div>
   <div class="middle">
     <div class="left">
-        <left-contents></left-contents>
-        <popup></popup>
+        <router-view name="leftContents"></router-view>
+        <router-view name="popUp"></router-view>
     </div>
     <div class="right">
-        <!-- <right-contents></right-contents> -->
-        <router-view></router-view>
+        <router-view name="rightContents"></router-view>
     </div>
   </div>
   <div class="bottom">
-    <audio-react-bar></audio-react-bar>
+    <router-view name="bottomBar"></router-view>
   </div>
 </div>
 </template>
 
 <script setup>
-import AudioReactBar from './components/bottom/AudioReactBar.vue'
-import LeftContents from './components/mid_component/LeftContents.vue'
-import NavBar from './components/top_com/NavBar.vue'
-import Popup from './components/mid_component/Popup.vue'
 </script>
 
 <style src="./assets/app.css" ></style>

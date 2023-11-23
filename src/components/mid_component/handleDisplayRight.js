@@ -7,8 +7,9 @@ export var maxItemsToShow = ref(2)
 
 // control how much content to show
 export function controlContent() {
+
     if (containerRight != null) {
-        var interval = 100;
+        var interval = 200;
 
         var updateInterval = setInterval(function() {
             var lenConRight = containerRight.value.offsetWidth - 27
