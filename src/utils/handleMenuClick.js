@@ -12,7 +12,6 @@ export class HandleClick {
         this.checkingElement = checkingElement
         this.clickPosition = clickPosition
 
-
         this.showMenu = this.showMenu.bind(this);
         this.checkClickOutsideWindow = this.checkClickOutsideWindow.bind(this);
         this.hideContextMenu = this.hideContextMenu.bind(this);
@@ -108,3 +107,22 @@ export class HandleClickManyDom extends HandleClick {
         window.removeEventListener('click', this.checkClickOutsideWindow);
     };
 };
+
+export class HandleMenuToggle extends HandleClick {
+    showMenu(event) {
+
+        if (this.isShowVar.value == true){
+            this.hideContextMenu()
+            return
+        };
+
+        this.isShowVar.value = true;
+        this.clickPosition.value = { x: event.clientX, y: event.clientY };
+        event.preventDefault();
+
+        setTimeout(() => {
+            window.addEventListener('click', this.checkClickOutsideWindow);
+            window.addEventListener('contextmenu', this.checkClickOutsideWindow);
+        }, 0);
+    }
+}

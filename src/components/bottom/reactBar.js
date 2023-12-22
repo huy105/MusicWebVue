@@ -34,6 +34,10 @@ export function updateProgressBar() {
         var interval = 100;
 
         var updateInterval = setInterval(function() {
+            if (progressBar.value == null) {
+                clearInterval(updateInterval);
+            }
+            
             var currentTime = play_list.seek() * 1000; // Chuyển đổi thời gian hiện tại thành mili giây
             var progress = (currentTime / duration) * 100;
 
@@ -43,6 +47,7 @@ export function updateProgressBar() {
             if (progress >= 100) {
                 clearInterval(updateInterval);
             }
+
         }, interval);
     }
 }
